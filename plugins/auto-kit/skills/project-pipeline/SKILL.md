@@ -92,6 +92,7 @@ Use `playwright-cli`:
 5. Run `break-ui` on every component that shows data or text (long names, empty states, huge numbers, non-Latin text) and fix what breaks.
 6. Run `web-design-guidelines` over the UI files and fix the findings.
 7. Run `web-security-checklist` and fix every FAIL. A static page only needs its sections 1, 6 and 8 — that is the checklist's own rule, not a reason to skip it.
+8. If the user asks for a full security review or audit, or the project has auth, payments or multi-user data: run `security-audit` (guidance mode for focused checks, full audit mode only when explicitly asked) on top of the checklist.
 
 ## Phase 6 — Polish (WEB, CODE)
 
@@ -139,11 +140,13 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | break-ui | 5 | WEB, 3D | always |
 | web-design-guidelines | 5 | WEB, 3D | always |
 | web-security-checklist | 5 | WEB, 3D; CODE with network, API keys, user data or hosting | always |
+| security-audit | 5 | WEB, 3D, CODE | if a full security review/audit is asked for, or the project has auth, payments or multi-user data |
 | find-animation-opportunities | 6 | WEB, 3D | always, within the picked motion level |
 | review-animations | 6 | WEB, 3D | tell the user to run `/auto-kit:review-animations` (manual only) |
 | improve-animations | 6 | WEB, 3D | if it's an existing project with a lot of motion code |
 | requesting-code-review (superpowers) | 6 | WEB, 3D, CODE | always |
 | verification-before-completion (superpowers) | end | WEB, 3D, VIDEO, CODE | always |
+| i-have-adhd | any | WEB, 3D, VIDEO, CODE | manual only — the user turns it on with `/auto-kit:i-have-adhd` for action-first, numbered output |
 | img2threejs | 7 | 3D | if a reference image exists |
 | motion graphics skill (Miftahul) | 8 | VIDEO | always |
 | Remotion best practices | 8 | VIDEO | if the video is rendered with Remotion |

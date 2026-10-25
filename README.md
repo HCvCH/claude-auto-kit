@@ -157,5 +157,7 @@ This copy is the author's own, filled by the weekly check from their saves. It's
 | `review-animations` | Strict motion review (run it yourself) | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `break-ui` | Stress-test UI with worst-case data | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `pick-ui-library` | Picks a library for a frontend task (run it yourself) | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
+| `security-audit` | Defensive security review and full audit workflow (validator scripts not included) | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) |
+| `i-have-adhd` | Action-first, numbered output style (run it yourself) | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) |
 
 Alongside these, the author's `project-pipeline` calls a few separately installed plugins and skills: the plugins `superpowers`, `ui-ux-pro-max` and `diagram-design`, and the skills `design-taste-frontend`, `impeccable`, `playwright-cli`, `img2threejs`, `remotion-best-practices` and a motion graphics skill. Swap them for whatever you use.
