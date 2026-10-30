@@ -59,6 +59,7 @@ Propose **three style directions** in the Phase 0 plan. They must differ in all 
 - Look at DESIGN.md files of sibling projects (`../*/DESIGN.md`) if they exist. No option may reuse the style, font pairing or palette of one of them unless the user asks for consistency.
 - At most one option may be built around a single look-defining skill's signature aesthetic (hallmark theme, apple-design look, a getdesign brand). At least one option is your own direction.
 - Never default to purple gradients or centered-hero + three-card grids.
+- VIDEO: each direction names a real reference family (e.g. Kurzgesagt-style flat illustration, Apple keynote, Stripe illustration, Swiss poster, risograph print). The "dark tech" default (dark navy + grid + mono labels + neon glow) is not allowed as an option unless the user asks for it.
 
 Each option names which "choose" skills it would use. After the user picks, define for the chosen direction: one font pairing, background color, one accent color, corner radius, shadow style, motion level. The look skills of the unpicked options are not applied. They may still be used as reviewers for objective problems (spacing, contrast, hierarchy), never to push their own aesthetic.
 
@@ -111,6 +112,23 @@ If a reference image exists in the project, use `/img2threejs` to rebuild it as 
 
 Always: 9:16 1080x1920 unless told otherwise. Offer the Phase 1 style directions for the video's look too. Show a storyboard with second-by-second timings first and wait for OK before rendering. Only generated or royalty-free audio. Render to `./out/`. Run the script, on-screen text and caption through `humanizer` before rendering.
 
+The final deliverable is ONE finished file (animation + burned-in captions + voice-over + SFX), not separate parts. If a voice-over exists, transcribe it for word timestamps and anchor every visual beat to a spoken phrase.
+
+### 8a — Video design rules (always, before writing any scene code)
+
+The web craft skills are not in the VIDEO bundle, but their anti-slop rules are. Load `design-taste-frontend` and apply its sections 4.2 (color), 4.4 (shape) and 9.A–9.G (AI tells) to every frame. A video is watched, not paused and read like an infographic. On top of that:
+
+- **Captions are the text layer.** Besides captions, at most ONE other text element on screen at a time (a single keyword, max 3 words). No sub-lines under headlines, no step/progress bars, no "STEP 1 ·" chips, no label on every object, no text on moving elements (max one short token, e.g. "IP").
+- **One focal point per scene.** If two unrelated things compete for attention, cut one.
+- **Banned default look:** dark navy + decorative grid, neon/outer glow and ripple rings, mono uppercase micro-labels, middle-dot (·) and arrow (→) chains, everything wrapped in a bordered rounded card, fake browser/app UI built from divs.
+- **Objects are shapes, not cards.** Draw a laptop as a laptop (filled, flat or dimensional), not an icon inside a rounded box.
+- **Icons only from a library** (`@phosphor-icons/react`, filled or duotone weight). Never hand-written SVG icon paths.
+- **Motion carries the attention, not text:** camera moves, scale, morphs, color changes, objects reacting. Every animation must show something the voice-over says.
+
+### 8b — Still check (always, before the full render)
+
+Render 8–10 stills at key moments (in Remotion: `npx remotion bundle` once, then `npx remotion still <bundle> …` per frame, so it doesn't rebundle every time), contact-sheet them, and check each against 8a: count text elements per frame (max 2 incl. captions), look for every banned pattern, check safe areas (nothing important in the top/bottom ~200 px except captions). Fix, re-check, then render.
+
 ## Skill bundles
 
 One row per skill. "Bundles" = project types the skill is relevant for. "Mode": **always** = run it on every matching project; **choose** = only via a style direction the user picked in Phase 1; **if** = only when the condition is true.
@@ -124,6 +142,8 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | hallmark audit | 6 | WEB, 3D | always |
 | DESIGN.md — getdesign brand file | 2 | WEB, 3D | choose (own DESIGN.md is always written) |
 | design-taste-frontend | 3 | WEB, 3D | always, inside DESIGN.md |
+| design-taste-frontend — AI-tell rules (4.2, 4.4, 9) | 8a | VIDEO | always |
+| video design rules + still check | 8a, 8b | VIDEO | always |
 | impeccable | 3, 6 | WEB, 3D | always, inside DESIGN.md |
 | emil-design-eng | 3 | WEB, 3D | always |
 | pick-ui-library | 3 | WEB, 3D | if a library choice comes up — tell the user (manual only) |
