@@ -167,6 +167,8 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | requesting-code-review (superpowers) | 6 | WEB, 3D, CODE | always |
 | verification-before-completion (superpowers) | end | WEB, 3D, VIDEO, CODE | always |
 | i-have-adhd | any | WEB, 3D, VIDEO, CODE | manual only — the user turns it on with `/auto-kit:i-have-adhd` for action-first, numbered output |
+| find-skills | any | WEB, 3D, VIDEO, CODE | if a needed capability is not covered by any installed skill — present options with source and install count, install only after the user says yes |
+| claude-md-audit | any | WEB, 3D, VIDEO, CODE | manual only — `/auto-kit:claude-md-audit` when Claude ignores rules or after a model upgrade |
 | img2threejs | 7 | 3D | if a reference image exists |
 | motion graphics skill (Miftahul) | 8 | VIDEO | always |
 | Remotion best practices | 8 | VIDEO | if the video is rendered with Remotion |
@@ -177,7 +179,7 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 
 - Checkpoint after Phase 0 always (that's where the user picks the style direction); after Phase 3 show the result (screenshot) before Motion/Test unless the user said to run straight through.
 - Before saying anything is done, fixed or working: run superpowers `verification-before-completion` and check that every "always" skill and every true "if" skill was actually used.
-- If a skill or tool is missing, say which one and continue with the best fallback — never stall.
+- If a skill or tool is missing, say which one and continue with the best fallback — never stall. If no installed skill covers a need, `find-skills` may suggest one; install only with the user's yes.
 - Skip superpowers' git skills (`using-git-worktrees`, `finishing-a-development-branch`) unless the project already uses git.
 - superpowers, ui-ux-pro-max and diagram-design come from separate plugins installed on this machine; if one is missing, say so and continue.
 - Keep narration minimal. At the end: what was built, where the files are, which style direction and look skills were used, and which skills ran.

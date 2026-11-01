@@ -159,5 +159,7 @@ This copy is the author's own, filled by the weekly check from their saves. It's
 | `pick-ui-library` | Picks a library for a frontend task (run it yourself) | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `security-audit` | Defensive security review and full audit workflow (validator scripts not included) | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) |
 | `i-have-adhd` | Action-first, numbered output style (run it yourself) | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) |
+| `find-skills` | Finds and suggests installable skills from skills.sh | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
+| `claude-md-audit` | Audits and slims down CLAUDE.md files (run it yourself) | this repo |
 
 Alongside these, the author's `project-pipeline` calls a few separately installed plugins and skills: the plugins `superpowers`, `ui-ux-pro-max` and `diagram-design`, and the skills `design-taste-frontend`, `impeccable`, `playwright-cli`, `img2threejs`, `remotion-best-practices` and a motion graphics skill. Swap them for whatever you use.
