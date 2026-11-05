@@ -2,7 +2,7 @@
   "name": "auto-kit",
   "description": "Self-updating skill kit: project-pipeline plus skills collected by a weekly automated check.",
   "author": {
-    "name": "DerHeimer"
+    "name": "HCvCH"
   },
-  "repository": "https://github.com/DerHeimer/claude-auto-kit"
+  "repository": "https://github.com/HCvCH/claude-auto-kit"
 }

@@ -59,6 +59,7 @@ Propose **three style directions** in the Phase 0 plan. They must differ in all 
 - Look at DESIGN.md files of sibling projects (`../*/DESIGN.md`) if they exist. No option may reuse the style, font pairing or palette of one of them unless the user asks for consistency.
 - At most one option may be built around a single look-defining skill's signature aesthetic (hallmark theme, apple-design look, a getdesign brand). At least one option is your own direction.
 - Never default to purple gradients or centered-hero + three-card grids.
+- For style names, font pairings and libraries, use `design-references` as the shelf to pick from; posters, ads and social graphics also follow its section 4 rules.
 - VIDEO: each direction names a real reference family (e.g. Kurzgesagt-style flat illustration, Apple keynote, Stripe illustration, Swiss poster, risograph print). The "dark tech" default (dark navy + grid + mono labels + neon glow) is not allowed as an option unless the user asks for it.
 
 Each option names which "choose" skills it would use. After the user picks, define for the chosen direction: one font pairing, background color, one accent color, corner radius, shadow style, motion level. The look skills of the unpicked options are not applied. They may still be used as reviewers for objective problems (spacing, contrast, hierarchy), never to push their own aesthetic.
@@ -81,7 +82,7 @@ WEB and CODE: for app logic (state, data handling, calculations, game rules — 
 
 ## Phase 4 — Motion (WEB)
 
-Follow the motion level picked in Phase 1. "None" still covers basic feedback (hover, press, focus, loading, success/error). "Subtle" adds entrances and state changes. "Rich" adds scroll reveals and scroll-linked effects with GSAP + ScrollTrigger from cdnjs. Always respect `prefers-reduced-motion`. For each animation, follow `animate` (decides whether it should animate at all, curve, duration, interruption) and check it against `animation-performance`. For drag, swipe, sheets, springs and other gesture-driven UI, use `apple-design`'s motion physics — its visual aesthetic only if that direction was picked.
+Follow the motion level picked in Phase 1. "None" still covers basic feedback (hover, press, focus, loading, success/error). "Subtle" adds entrances and state changes. "Rich" adds scroll reveals and scroll-linked effects with GSAP + ScrollTrigger from cdnjs. Always respect `prefers-reduced-motion`. For each animation, follow `animate` (decides whether it should animate at all, curve, duration, interruption) and check it against `animation-performance`. For drag, swipe, sheets, springs and other gesture-driven UI, use `apple-design`'s motion physics — its visual aesthetic only if that direction was picked. Smooth scrolling → Lenis; ready animated React components → React Bits or 21st.dev, restyled to the picked direction (see `design-references`).
 
 ## Phase 5 — Test (WEB, 3D)
 
@@ -103,11 +104,13 @@ WEB and CODE: get a structured review with superpowers `requesting-code-review` 
 
 ## Phase 7 — 3D asset (3D)
 
-If a reference image exists in the project, use `/img2threejs` to rebuild it as a procedural Three.js model. Works well for hard-surface objects, poorly for faces and characters — say so if the image is organic. Embed it with orbit controls and soft lighting, then run Phase 5 on the page.
+If a reference image exists in the project, use `/img2threejs` to rebuild it as a procedural Three.js model. Works well for hard-surface objects, poorly for faces and characters — say so if the image is organic. Embed it with orbit controls and soft lighting, then run Phase 5 on the page. Without a reference image, or when a designed scene is wanted instead of a procedural one, build it in Spline and embed it (see `design-references`).
 
 ## Phase 8 — Video (VIDEO)
 
 - Format and skill choice first → load `video-pipeline`: it picks the format (explainer, 3D explainer, data, map, breakdown, cartoon, story series, edits) and the skills for it, then hands back here.
+- Cutting, reframing, captions, audio mix and compression → `ffmpeg-media`.
+- Prompts for AI video generators instead of code-rendered video → `ai-video-prompts`.
 - Direction for every video — script, storyboard, timing, sound design → the motion graphics skill (Miftahul).
 - Rendering in Remotion (default for data-driven or template videos: charts, bar races, swappable JSON data) → Remotion best practices skill.
 
@@ -139,6 +142,8 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | brainstorming (superpowers) | 0 | WEB, 3D, VIDEO, CODE | always, except a single static page or small script with a complete brief |
 | writing-plans + executing-plans (superpowers) | 0 → 3 | WEB, 3D, VIDEO, CODE | if the build has several steps or views |
 | ui-ux-pro-max | 1 | WEB, 3D, VIDEO | always (source for the style directions) |
+| design-references — style catalog, font pairings | 1 | WEB, 3D, VIDEO | choose |
+| design-references — libraries, poster/ad rules | 1, 4, 7 | WEB, 3D, VIDEO | always as reference; poster/ad rules always for static graphics |
 | hallmark — themes, genres, macrostructures | 1 | WEB, 3D | choose |
 | hallmark audit | 6 | WEB, 3D | always |
 | DESIGN.md — getdesign brand file | 2 | WEB, 3D | choose (own DESIGN.md is always written) |
@@ -172,6 +177,8 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | claude-md-audit | any | WEB, 3D, VIDEO, CODE | manual only — `/auto-kit:claude-md-audit` when Claude ignores rules or after a model upgrade |
 | img2threejs | 7 | 3D | if a reference image exists |
 | video-pipeline | 8 | VIDEO | always (format and skill router, runs before the storyboard) |
+| ffmpeg-media | 8 | VIDEO | if footage or audio has to be cut, converted, captioned or mixed |
+| ai-video-prompts | 8 | VIDEO | if the video is made with an AI video generator instead of code |
 | motion graphics skill (Miftahul) | 8 | VIDEO | always |
 | Remotion best practices | 8 | VIDEO | if the video is rendered with Remotion |
 
@@ -186,4 +193,4 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 - superpowers, ui-ux-pro-max and diagram-design come from separate plugins installed on this machine; if one is missing, say so and continue.
 - Keep narration minimal. At the end: what was built, where the files are, which style direction and look skills were used, and which skills ran.
 
-License: CC-BY-NC-SA-4.0 — © DerHeimer, https://github.com/DerHeimer/claude-auto-kit (see NOTICE.md)
+License: CC-BY-NC-SA-4.0 — © HCvCH, https://github.com/HCvCH/claude-auto-kit (see NOTICE.md)

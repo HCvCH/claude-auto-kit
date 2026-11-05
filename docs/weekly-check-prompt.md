@@ -84,4 +84,4 @@ switch them to "claude-installed" only if nothing else on them is still missing.
 
 ---
 
-License: CC-BY-NC-SA-4.0 — © DerHeimer, https://github.com/DerHeimer/claude-auto-kit (see NOTICE.md)
+License: CC-BY-NC-SA-4.0 — © HCvCH, https://github.com/HCvCH/claude-auto-kit (see NOTICE.md)

@@ -35,7 +35,7 @@ On GitHub, click **Use this template → Create a new repository** (or **Fork**)
 The project is licensed [CC BY-NC-SA 4.0](LICENSE): free for your own non-commercial use, with credit. Keep [`NOTICE.md`](NOTICE.md) and put this line at the top of your copy's README:
 
 ```markdown
-> Based on [claude-auto-kit](https://github.com/DerHeimer/claude-auto-kit) by DerHeimer, licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+> Based on [claude-auto-kit](https://github.com/HCvCH/claude-auto-kit) by HCvCH, licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 ```
 
 ### 2. Point it at your account
@@ -131,7 +131,7 @@ A fixed sequence of phases for web, UI, 3D, video and plain code projects. Claud
 
 ## License
 
-claude-auto-kit was created by **DerHeimer**. Everything written for this repo is licensed [CC BY-NC-SA 4.0](LICENSE): copy and adapt it for non-commercial use, credit the original as described in [NOTICE.md](NOTICE.md), and share changes under the same license. No commercial use.
+claude-auto-kit was created by **HCvCH**. Everything written for this repo is licensed [CC BY-NC-SA 4.0](LICENSE): copy and adapt it for non-commercial use, credit the original as described in [NOTICE.md](NOTICE.md), and share changes under the same license. No commercial use.
 
 Copied skills keep their original licenses, listed with full text in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). [NOTICE.md](NOTICE.md) says which part is under which license.
 
@@ -162,5 +162,8 @@ This copy is the author's own, filled by the weekly check from their saves. It's
 | `find-skills` | Finds and suggests installable skills from skills.sh | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
 | `claude-md-audit` | Audits and slims down CLAUDE.md files (run it yourself) | this repo |
 | `video-pipeline` | Picks the video format and the skills to build it | this repo |
+| `design-references` | Style catalog, font pairings, libraries and poster/ad rules | this repo |
+| `ffmpeg-media` | ffmpeg recipes for cutting, reframing, captions and audio | this repo |
+| `ai-video-prompts` | Prompts for AI video generators in seven formats | this repo |
 
 Alongside these, the author's `project-pipeline` calls a few separately installed plugins and skills: the plugins `superpowers`, `ui-ux-pro-max` and `diagram-design`, and the skills `design-taste-frontend`, `impeccable`, `playwright-cli`, `img2threejs`, `remotion-best-practices` and a motion graphics skill. Swap them for whatever you use.

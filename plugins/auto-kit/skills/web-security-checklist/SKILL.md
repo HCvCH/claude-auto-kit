@@ -61,4 +61,4 @@ Skip sections that clearly don't apply (a static page with no forms and no keys 
 
 ---
 Written in own words from public "vibe coding security checklist" material; no third-party text copied.
-License: CC-BY-NC-SA-4.0 — © DerHeimer, https://github.com/DerHeimer/claude-auto-kit (see NOTICE.md)
+License: CC-BY-NC-SA-4.0 — © HCvCH, https://github.com/HCvCH/claude-auto-kit (see NOTICE.md)

@@ -22,6 +22,10 @@ Ask at most one question if the brief doesn't make the format obvious. Otherwise
 | Illustrated story series | episodic stories, "viewers vote on the next part" | one consistent illustration style per series, slow push-ins and parallax on stills | per-scene images from an image generator the user has, kept consistent with a written style sheet (palette, line, lighting, character sheet); parallax and Ken Burns motion in Remotion | Remotion |
 | Talking-head edit | raw recording to cut | jump cuts, zooms on emphasis, captions | ffmpeg for cuts and audio; captions from word timestamps | ffmpeg + Remotion overlays |
 | Shorts from long video | "cut this podcast into clips" | 9:16 reframe, hook in the first 2 s | transcript → pick self-contained segments → reframe | ffmpeg |
+| Ranking / tier list | "top 5 …", tier rankings, versus clips | big numbered slots, items drop into tiers, one item per beat | Remotion template with items in JSON | Remotion |
+| Faceless short from a topic | "make a short about X" with stock footage | stock clips + captions + voice-over | script → stock footage search → captions; `ffmpeg-media` for assembly | ffmpeg + Remotion captions |
+
+Mechanical editing (cuts, reframes, captions, loudness) always goes through `ffmpeg-media`. For prompt ideas and real examples of Claude-made motion videos, browse the CC-BY-4.0 collection https://github.com/athemeroy/awesome-claude-5-5-videos and adapt — never copy a prompt unchanged. Sound effects: use a local royalty-free SFX folder if the user has one (ask once for its path) before generating any.
 
 If the format needs a tool that isn't installed (HyperFrames, an image generator, a TTS tool), say which one and use the fallback in the same row — never stall.
 
@@ -58,4 +62,4 @@ For a format the user will repeat (story series, weekly explainer, ranking reels
 
 ---
 Written for this repo.
-License: CC-BY-NC-SA-4.0 — © DerHeimer, https://github.com/DerHeimer/claude-auto-kit (see NOTICE.md)
+License: CC-BY-NC-SA-4.0 — © HCvCH, https://github.com/HCvCH/claude-auto-kit (see NOTICE.md)
