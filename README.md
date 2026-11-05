@@ -161,5 +161,6 @@ This copy is the author's own, filled by the weekly check from their saves. It's
 | `i-have-adhd` | Action-first, numbered output style (run it yourself) | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) |
 | `find-skills` | Finds and suggests installable skills from skills.sh | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
 | `claude-md-audit` | Audits and slims down CLAUDE.md files (run it yourself) | this repo |
+| `video-pipeline` | Picks the video format and the skills to build it | this repo |
 
 Alongside these, the author's `project-pipeline` calls a few separately installed plugins and skills: the plugins `superpowers`, `ui-ux-pro-max` and `diagram-design`, and the skills `design-taste-frontend`, `impeccable`, `playwright-cli`, `img2threejs`, `remotion-best-practices` and a motion graphics skill. Swap them for whatever you use.
