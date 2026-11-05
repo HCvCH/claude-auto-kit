@@ -24,10 +24,24 @@ Ask at most one question if the brief doesn't make the format obvious. Otherwise
 | Shorts from long video | "cut this podcast into clips" | 9:16 reframe, hook in the first 2 s | transcript → pick self-contained segments → reframe | ffmpeg |
 | Ranking / tier list | "top 5 …", tier rankings, versus clips | big numbered slots, items drop into tiers, one item per beat | Remotion template with items in JSON | Remotion |
 | Faceless short from a topic | "make a short about X" with stock footage | stock clips + captions + voice-over | script → stock footage search → captions; `ffmpeg-media` for assembly | ffmpeg + Remotion captions |
+| Depth UI reel | app or website showcase, "show my product" | screens float in 3D space with parallax and depth of field, cursor or tap highlights | React Three Fiber or CSS 3D in Remotion with screenshots as textures | Remotion |
+| Coaching / talking clip | advice, tips, podcast snippet | speaker + big keyword captions + b-roll cut-ins every 3–5 s | `ffmpeg-media` for cuts, captions from Whisper timestamps, b-roll from free stock | ffmpeg + Remotion overlays |
+| Photo tour / listing video | property, product or location photos → cinematic tour | slow push-ins, parallax from depth, smooth crossfades, music | photos as layers in Remotion (Ken Burns, 2.5D parallax) — no paid generator needed | Remotion |
 
 Mechanical editing (cuts, reframes, captions, loudness) always goes through `ffmpeg-media`. For prompt ideas and real examples of Claude-made motion videos, browse the CC-BY-4.0 collection https://github.com/athemeroy/awesome-claude-5-5-videos and adapt — never copy a prompt unchanged. Sound effects: use a local royalty-free SFX folder if the user has one (ask once for its path) before generating any.
 
 If the format needs a tool that isn't installed (HyperFrames, an image generator, a TTS tool), say which one and use the fallback in the same row — never stall.
+
+## 1b. Quick mode (one-prompt videos)
+
+If the user gives only a short prompt ("make a full-visual explainer about how a touchscreen works") or says "quick": pick the format and ONE style direction yourself, write the style sheet, skip the questions, and still show the storyboard for a single OK before rendering. Every visual must be drawn in code or come from the image sources below — the result should look finished without any further input.
+
+## 1c. Image and footage sources (free first)
+
+1. **Code-drawn** (SVG, CSS, React Three Fiber) — default for explainers, data, maps, cartoons.
+2. **Local image generation** — ComfyUI on the user's PC through Comfy MCP (`comfy-mcp`), model Flux.1 [schnell] (Apache-2.0, fine for monetized videos; GGUF Q5 fits 8 GB VRAM). Flux.1 [dev] and Kontext [dev] look better and keep characters consistent but are non-commercial — only for videos that won't be monetized.
+3. **Free stock** — Pexels and Pixabay (free API keys) for b-roll and photos.
+4. **Paid generators** (Higgsfield, Veo, Seedance) only if the user explicitly asks; then write the prompts with `ai-video-prompts`.
 
 ## 2. Pick the look
 

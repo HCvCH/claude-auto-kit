@@ -15,6 +15,8 @@ Inside a matching bundle there are three modes:
 
 ## Phase 0 — Classify (always)
 
+If the brief is a Google Maps link or a local business, start with `maps-to-website` to collect the facts. If a needed tool or workflow is missing, check `workflow-stacks` and `claude-code-resources` before `find-skills`.
+
 Read the user's request and any existing files. Classify the project as one or more of:
 
 - **WEB** — website, landing page, dashboard, web app, browser game UI, any page with a UI
@@ -74,6 +76,7 @@ All later UI work must follow DESIGN.md. DESIGN.md wins over any skill's default
 
 ## Phase 3 — Build (WEB, CODE)
 
+If the user provides reference images or mockups, or wants a visual-first build, follow `image-to-code` section by section. 
 WEB: Follow `design-taste-frontend` and `impeccable` for craft — hierarchy, spacing, typography quality, avoiding generic AI output — inside the picked direction and DESIGN.md, not instead of them. Use realistic copy, never lorem ipsum. Default stack: single index.html with vanilla JS for small things; Vite + React only when the project needs state across many views or the user asks for it. Charts: BKlit UI if it fits, Recharts as fallback.
 
 Also load `emil-design-eng` for component-level polish (states, details, feel). When a library choice comes up (toasts, OTP, command menu, drag and drop, virtualization …), suggest the user runs `/auto-kit:pick-ui-library` (it only starts on explicit invocation). Run every piece of visible copy through `humanizer` before it ships.
@@ -173,6 +176,10 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | requesting-code-review (superpowers) | 6 | WEB, 3D, CODE | always |
 | verification-before-completion (superpowers) | end | WEB, 3D, VIDEO, CODE | always |
 | i-have-adhd | any | WEB, 3D, VIDEO, CODE | manual only — the user turns it on with `/auto-kit:i-have-adhd` for action-first, numbered output |
+| maps-to-website | 0 | WEB | if the brief is a Maps link or a local business |
+| image-to-code | 3 | WEB, 3D | if reference images exist or a visual-first build is wanted |
+| workflow-stacks | 0 | WEB, 3D, VIDEO, CODE | if the user asks for an automation, tool stack or a free replacement for a paid tool |
+| claude-code-resources | any | WEB, 3D, VIDEO, CODE | if a Claude Code tool, guide or skill pack is asked for |
 | find-skills | any | WEB, 3D, VIDEO, CODE | if a needed capability is not covered by any installed skill — present options with source and install count, install only after the user says yes |
 | claude-md-audit | any | WEB, 3D, VIDEO, CODE | manual only — `/auto-kit:claude-md-audit` when Claude ignores rules or after a model upgrade |
 | img2threejs | 7 | 3D | if a reference image exists |

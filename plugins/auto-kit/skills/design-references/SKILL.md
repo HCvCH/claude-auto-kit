@@ -62,7 +62,9 @@ Script faces only for one or two words (a logo line, a headline accent), never f
 | Embedded 3D scenes without code | Spline (spline.design) | export the scene and embed with `@splinetool/react-spline` or the viewer; keep the file small |
 | Procedural 3D from a photo | `img2threejs` | Phase 7 |
 | Interaction prompt ideas for 3D sites | Getlayers prompt library (getlayers) | use as inspiration for the interaction, not as copy-paste output |
-| Real app screen references | Mobbin (Mobbin MCP if installed) | study patterns, don't clone screens |
+| Real app screen references | Mobbin (free browsing; the MCP needs a paid key) | study patterns, don't clone screens |
+| Open-source animated UI components (copy-paste, React + Tailwind) | Magic UI (magicui.design, MIT), Animate UI (animate-ui.com, MIT), Motion Primitives (motion-primitives.com, MIT), Aceternity UI (ui.aceternity.com, free components), shadcn/ui (ui.shadcn.com, MIT) | pick ONE library per project; copy only the components the design needs and restyle them to the picked direction |
+| Reference image → code | `image-to-code` skill | build a section from a generated or provided reference image |
 
 Every JS animation library adds weight: budget roughly 150 KB of JS for animation in total and check typography and spacing first — motion doesn't fix a weak layout.
 

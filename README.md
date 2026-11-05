@@ -165,5 +165,9 @@ This copy is the author's own, filled by the weekly check from their saves. It's
 | `design-references` | Style catalog, font pairings, libraries and poster/ad rules | this repo |
 | `ffmpeg-media` | ffmpeg recipes for cutting, reframing, captions and audio | this repo |
 | `ai-video-prompts` | Prompts for AI video generators in seven formats | this repo |
+| `image-to-code` | Builds sections from reference images | this repo |
+| `maps-to-website` | Local-business website from a Maps link | this repo |
+| `workflow-stacks` | Tool stacks and free replacements for paid tools | this repo |
+| `claude-code-resources` | Map of Claude Code repos, guides and packs | this repo |
 
 Alongside these, the author's `project-pipeline` calls a few separately installed plugins and skills: the plugins `superpowers`, `ui-ux-pro-max` and `diagram-design`, and the skills `design-taste-frontend`, `impeccable`, `playwright-cli`, `img2threejs`, `remotion-best-practices` and a motion graphics skill. Swap them for whatever you use.
