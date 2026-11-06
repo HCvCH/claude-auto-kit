@@ -1,162 +1,141 @@
 # claude-auto-kit
 
-I kept saving Instagram reels about Claude skills and tools to mymind, and I never installed any of them. So I built this. Once a week a scheduled Claude task reads my mymind space, works out which tool or skill each post is about, and adds the useful ones to this plugin. Claude Code pulls the update by itself, and the next project I start already has them.
+I saved Instagram reels about Claude skills to mymind and never installed any of them. Now a weekly Claude task reads that mymind space, finds the tool or skill behind each post and adds the useful ones to this plugin. Claude Code pulls the update on its own.
 
-You can run the same setup with your own saves. Treat the repo as a template: fork it, point it at your mymind space, and your copy fills up with your finds. Installing my copy gives you my picks, and those change every week.
-
-Claude Code wrote most of the files. I decide what goes in and use it on my own projects.
+Fork it and your copy fills up with your own finds. Installing my copy gives you my picks, which change every week. Claude Code wrote most of the files; I decide what goes in and use it on my own projects.
 
 ![How it works: save posts to mymind, a weekly Claude task sorts them, useful skills land in the plugin](docs/flow.svg)
 
 ## What you need
 
-- [Claude Code](https://code.claude.com) with the `claude` CLI, and [git](https://git-scm.com) (Claude Code uses it to fetch your plugin)
-- A [mymind](https://mymind.com) account. There's a free plan with a card limit (100 cards at the time of writing — check [mymind's pricing](https://mymind.com/pricing)); paid plans remove the limit.
-- A Claude plan with scheduled tasks and connectors, and the **mymind connector** enabled in Claude (Settings → Connectors)
-- A GitHub account, with Claude's GitHub access granted to your copy of this repo (push access)
+- [Claude Code](https://code.claude.com) with the `claude` CLI, and [git](https://git-scm.com) (Claude Code fetches the plugin with it)
+- A [mymind](https://mymind.com) account (the free plan caps you at 100 cards at the time of writing, paid plans don't; see [pricing](https://mymind.com/pricing))
+- A Claude plan with scheduled tasks and the mymind connector (Settings → Connectors)
+- A GitHub account; Claude needs push access to your copy
 
-## Set up your own
+## Setup
 
-### 1. Make your copy
+1. **Copy the repo.** On GitHub: **Use this template → Create a new repository**, or **Fork**. If your copy is private, sign in to GitHub with git on your PC.
+2. **Credit the original.** Keep [`NOTICE.md`](NOTICE.md) and put its credit line at the top of your README.
+3. **Set your username** in two files. Don't add a `version` field, or auto-update stops working.
+   - [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) → `owner.name`
+   - [`plugins/auto-kit/.claude-plugin/plugin.json`](plugins/auto-kit/.claude-plugin/plugin.json) → `author.name`, `repository`
+4. **Trim the skills (optional).** Your copy starts with [the skills in this repo](#skills-in-this-copy). Delete folders under `plugins/auto-kit/skills/` you don't want and remove their rows from `project-pipeline`. Keep `project-pipeline` itself; if you delete everything else, the weekly check refills it from your own finds.
+5. **Install your copy:**
 
-On GitHub, click **Use this template → Create a new repository** (or **Fork**). Pick any name, e.g. `claude-auto-kit`. A template copy can be private; if it is, git on your PC needs to be signed in to GitHub so Claude Code can fetch it.
+   ```powershell
+   claude plugin marketplace add <your-username>/<your-repo>
+   claude plugin install auto-kit@auto-kit
+   ```
 
-The project is licensed [CC BY-NC-SA 4.0](LICENSE): free for your own non-commercial use, with credit. Keep [`NOTICE.md`](NOTICE.md) and put this line at the top of your copy's README:
+6. **Turn on auto-update** so new skills arrive by themselves. Add to `~/.claude/settings.json` (Windows: `C:\Users\<you>\.claude\settings.json`):
 
-```markdown
-> Based on [claude-auto-kit](https://github.com/HCvCH/claude-auto-kit) by HCvCH, licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-```
+   ```json
+   "extraKnownMarketplaces": {
+     "auto-kit": {
+       "source": { "source": "github", "repo": "<your-username>/<your-repo>" },
+       "autoUpdate": true
+     }
+   }
+   ```
 
-### 2. Point it at your account
+7. **Load the pipeline in every project.** Add to your `CLAUDE.md`:
 
-Edit two files in your copy and replace the owner with your GitHub username:
+   ```text
+   For every new project (website, web app, dashboard, 3D scene, motion video), start by loading the auto-kit:project-pipeline skill and follow its phases.
+   ```
 
-- [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) → `owner.name`
-- [`plugins/auto-kit/.claude-plugin/plugin.json`](plugins/auto-kit/.claude-plugin/plugin.json) → `author.name` and `repository`
+8. **Create a mymind space** (e.g. "AI") and share reels, posts and screenshots into it.
+9. **Schedule the weekly check.** Fill in the placeholders in [`docs/weekly-check-prompt.md`](docs/weekly-check-prompt.md) (your repo, your space, the plugins and skills you already have) and schedule it in Claude. If a scheduled session can't push to your repo, run it as a weekly reminder in a chat with the repo attached. The prompt books its own next run.
 
-Don't add a `version` field to either file — without it, Claude Code updates the plugin on every new commit.
+## How the weekly check works
 
-### 3. Decide what to start with
-
-Your copy starts with the skills that are in this repo right now (see [the bottom of this page](#the-skills-already-in-this-repo)). Keep them, or delete the folders under `plugins/auto-kit/skills/` you don't want and remove their rows from `project-pipeline`. Keep `project-pipeline` itself — it's the part the weekly check builds on. If you delete everything else, the weekly check simply fills it up from your own finds.
-
-### 4. Create a mymind space
-
-Make a space for your finds (e.g. "AI") and share reels, posts and screenshots into it. Connect mymind to Claude if you haven't.
-
-### 5. Schedule the weekly check
-
-Take the prompt from [`docs/weekly-check-prompt.md`](docs/weekly-check-prompt.md), fill in the placeholders (your repo, your space, the skills and plugins you already have), and schedule it in Claude. The task needs push access to your repo. If a fresh scheduled session can't get it, run the check as a weekly reminder in a chat that has the repo attached — the prompt schedules its own next run.
-
-### 6. Install your copy
-
-Replace `<your-username>/<your-repo>` with your copy:
-
-```powershell
-claude plugin marketplace add <your-username>/<your-repo>
-claude plugin install auto-kit@auto-kit
-```
-
-Turn on auto-update so new skills arrive by themselves — add this to `~/.claude/settings.json` (Windows: `C:\Users\<you>\.claude\settings.json`):
-
-```json
-"extraKnownMarketplaces": {
-  "auto-kit": {
-    "source": { "source": "github", "repo": "<your-username>/<your-repo>" },
-    "autoUpdate": true
-  }
-}
-```
-
-Make Claude run the pipeline automatically — add this line to your `CLAUDE.md`:
-
-```text
-For every new project (website, web app, dashboard, 3D scene, motion video), start by loading the auto-kit:project-pipeline skill and follow its phases.
-```
-
-## How it works
-
-1. **Capture.** Whenever you see something useful — a reel about a design skill, a security checklist, a GitHub repo — share it to your mymind space. mymind stores the link and writes an AI summary of the content.
-2. **Weekly check.** A scheduled Claude task reads every item in that space that isn't tagged `claude-checked` yet. It works from mymind's summary, the tags and screenshots, plus web search and GitHub, to find out which tool or skill the post is about. It does not scrape Instagram or TikTok.
-3. **Sort and act.**
-   - Skills with an open license (MIT, Apache-2.0 …) are copied into `plugins/auto-kit/skills/` — Markdown only, no scripts.
-   - Checklists and prompts from posts are rewritten as skills in Claude's own words.
-   - Plugins, MCP servers and CLI tools are never added automatically, because they run code on your machine. They show up as ready-to-paste commands in the weekly report.
-4. **Wire it up.** Every new skill is added to [`project-pipeline`](plugins/auto-kit/skills/project-pipeline/SKILL.md) — as a row in its "Skill bundles" table (phase, project types, mode: always / choose / if) and in the text of its phase.
-5. **Ship it.** The task validates the plugin, commits to `main`, tags each mymind item `claude-checked` plus one status tag and a few topic tags (see below) with a short note, and sends you a report: what was added, what was skipped and why, and what's left for you to do.
-6. **Clean up.** Only items whose content is 100 % installed (`claude-installed`) are listed in the next report as ready to delete; reply "delete" and Claude removes them from mymind (they stay in mymind's trash for 30 days). "Checked" is never enough on its own. Items waiting for you (`claude-todo`, `claude-unclear`) are listed again every week until you say they're installed. Everything else stays.
-7. **Use it.** Claude Code auto-updates the plugin. Start any project and `project-pipeline` classifies it, runs the quality and test skills for that type, and offers three different style directions to pick from — a website gets web skills, but no 3D or video skills, and no single design skill makes every site look the same.
+1. mymind stores each link you share and writes an AI summary of it.
+2. Claude reads every item in the space without the `claude-checked` tag. It uses that summary, tags, screenshots, web search and GitHub. It never scrapes Instagram or TikTok.
+3. It sorts each find:
+   - **Skill with an open license** (MIT, Apache-2.0 …) → copied into `plugins/auto-kit/skills/`, Markdown only
+   - **Checklist or prompt** → rewritten as a skill in its own words
+   - **Plugin, MCP server, CLI tool, connector** → install command in the report. These run code on your machine, so Claude never adds them itself
+4. Each new skill gets a row in the "Skill bundles" table of [`project-pipeline`](plugins/auto-kit/skills/project-pipeline/SKILL.md) (phase, project types, mode: always / choose / if) and a sentence in the text of its phase.
+5. Claude validates the plugin, commits, tags the mymind items and sends you a report: what it added, what it skipped and why, what's left for you.
 
 ### Tags
 
-Every checked item gets `claude-checked`, exactly one status tag and one or more topic tags.
+Each checked item gets `claude-checked`, one status tag and one or more topic tags.
 
-| Status | Meaning | What happens |
+| Status | Meaning | Next |
 |---|---|---|
-| `claude-installed` | 100 % installed: every tool, skill or checklist the item shows is verifiably on your machine — in the auto-kit repo (auto-updated), or in your list of installed plugins and skills. If even one part is missing or couldn't be identified, the item does **not** get this tag | Offered for deletion in the next run — the only status that is |
-| `claude-todo` | Needs you: a plugin, MCP server, CLI tool or connector to install | Listed under "For you to do" every week until you report it installed (then it becomes `claude-installed`) |
-| `claude-unclear` | The tool couldn't be identified | Listed every week until you say what was meant |
-| `claude-keep` | Worth keeping, nothing to install: general knowledge, inspiration, non-Claude tools | Stays, no reminders |
+| `claude-installed` | Every tool, skill or checklist in the item is in the repo or in your installed plugins. One missing or unclear part and the item doesn't get this tag | Listed for deletion. Reply "delete" and Claude moves them to mymind's trash (30 days) |
+| `claude-todo` | You need to install a plugin, MCP server, CLI tool or connector | Listed every week until you report it installed, then it becomes `claude-installed` |
+| `claude-unclear` | Claude couldn't tell which tool the post means | Listed every week until you say |
+| `claude-keep` | Nothing to install (know-how, inspiration, non-Claude tools) | Stays, no reminders |
 
-Topic tags: `knowledge` (general AI know-how), `design`, `video`, `security`, `coding`, `ai-tool` (a non-Claude AI app or service), `offtopic`.
+Topics: `knowledge` (general AI know-how), `design`, `video`, `security`, `coding`, `ai-tool` (non-Claude AI service), `offtopic`.
 
 ## What `project-pipeline` does
 
-A fixed sequence of phases for web, UI, 3D, video and plain code projects. Claude classifies the project (WEB, 3D, VIDEO, CODE) and only uses skills relevant to that type. Quality, test and process skills always run. Look-defining skills — layout catalogs, themes, brand styles, signature aesthetics — are never applied by default: Claude offers three clearly different style directions (checking sibling projects so it doesn't repeat itself) and you pick one. Phases: classify → style → design system file → build → motion → test → polish, plus 3D-asset and video phases. If a skill isn't installed, Claude says so and carries on.
+- Sorts the project into WEB, 3D, VIDEO or CODE and loads only the skills for that type: a website gets web skills, no 3D or video skills
+- Runs quality, test and process skills every time
+- Offers three distinct style directions and lets you pick, checking sibling projects so it doesn't repeat itself. Look-defining skills (layout catalogs, themes, brand styles) never run by default, so your sites don't all look the same
+- Phases: classify → style → design system → build → motion → test → polish, plus 3D-asset and video phases
+- Tells you when a skill is missing and carries on
 
-## Safety model
+## Safety and limits
 
-- Only Markdown skills land in the repo automatically. Hooks, MCP servers, `bin/` executables and scripts never do — those come as commands you decide to run.
-- Every candidate is checked for maintainer, activity, license, and for instructions that would push Claude to leak data, ignore rules or run code unasked.
-- Offensive security tools are noted, never added.
-- The weekly task never executes anything from a third-party repository.
-- Social media pages are not scraped; the content comes from mymind's own summary and public sources.
-
-## Limitations
-
-- If a post doesn't name the tool and mymind's summary doesn't either, the item is tagged `claude-unclear` and the report asks you which tool was meant.
-- Skills without a license that allows redistribution are not copied; you get the install command instead.
-- Some skills are designed to run only when you invoke them, e.g. `/auto-kit:review-animations`.
+- No hooks, MCP servers, `bin/` files or scripts land in the repo. You decide what code runs on your machine.
+- Claude checks each candidate's maintainer, activity, license and instructions (data leaks, ignored rules, code run without asking). Offensive security tools are left out.
+- The weekly task runs nothing from third-party repos.
+- Skills without a license that allows copying stay out; you get the install command.
+- If neither the post nor mymind's summary names the tool, the item gets `claude-unclear` and the report asks you.
+- Some skills only run when you call them, e.g. `/auto-kit:review-animations`.
 
 ## License
 
-claude-auto-kit was created by **HCvCH**. Everything written for this repo is licensed [CC BY-NC-SA 4.0](LICENSE): copy and adapt it for non-commercial use, credit the original as described in [NOTICE.md](NOTICE.md), and share changes under the same license. No commercial use.
+Created by **HCvCH**. Everything written for this repo: [CC BY-NC-SA 4.0](LICENSE), copy and adapt it for non-commercial use with credit, share changes under the same license. No commercial use. Copied skills keep their own licenses ([THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)). [NOTICE.md](NOTICE.md) says which part falls under which.
 
-Copied skills keep their original licenses, listed with full text in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). [NOTICE.md](NOTICE.md) says which part is under which license.
+## Skills in this copy
 
----
+My own copy, as an example. Yours will grow in its own direction.
 
-## The skills already in this repo
+<details>
+<summary>26 skills</summary>
 
-This copy is the author's own, filled by the weekly check from their saves. It's here as an example of what the template produces — your copy will drift in its own direction.
+**Written for this repo**
 
-| Skill | What it's for | Source |
+| Skill | For |
+|---|---|
+| `project-pipeline` | The orchestrator above |
+| `video-pipeline` | Picks the video format and the skills to build it |
+| `web-security-checklist` | Pre-launch security review for AI-built web apps |
+| `claude-md-audit` | Audits and slims down CLAUDE.md files (run it yourself) |
+| `design-references` | Style catalog, font pairings, libraries, poster and ad rules |
+| `image-to-code` | Builds sections from reference images |
+| `maps-to-website` | Local-business website from a Maps link |
+| `ffmpeg-media` | ffmpeg recipes for cutting, reframing, captions and audio |
+| `ai-video-prompts` | Prompts for AI video generators in seven formats |
+| `workflow-stacks` | Tool stacks and free replacements for paid tools |
+| `claude-code-resources` | Map of Claude Code repos, guides and packs |
+
+**Copied with license**
+
+| Skill | For | Source |
 |---|---|---|
-| `project-pipeline` | The orchestrator above | this repo |
-| `web-security-checklist` | Pre-launch security review for AI-built web apps | this repo |
-| `hallmark` | Anti-"AI slop" page structure, themes and audits | [nutlope/hallmark](https://github.com/nutlope/hallmark) |
-| `humanizer` | Removes AI writing patterns from text | [blader/humanizer](https://github.com/blader/humanizer) |
-| `web-design-guidelines` | UI review against Vercel's Web Interface Guidelines | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) |
+| `hallmark` | Page structure, themes and audits against generic AI layouts | [nutlope/hallmark](https://github.com/nutlope/hallmark) |
+| `humanizer` | Removes AI writing patterns | [blader/humanizer](https://github.com/blader/humanizer) |
+| `web-design-guidelines` | UI review against Vercel's guidelines | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) |
+| `find-skills` | Suggests installable skills from skills.sh | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
+| `security-audit` | Defensive security review (validator scripts not included) | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) |
+| `i-have-adhd` | Action-first, numbered output (run it yourself) | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) |
 | `apple-design` | Apple-style fluid, physical motion for the web | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `emil-design-eng` | UI polish and component details | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `animate` | Building a single animation the right way | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `animation-performance` | Keeping animations inside the frame budget | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
-| `find-animation-opportunities` | Where motion is missing — and where it isn't | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
+| `find-animation-opportunities` | Where motion is missing, and where it isn't | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `improve-animations` | Audit and plan for existing motion code | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `review-animations` | Strict motion review (run it yourself) | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `break-ui` | Stress-test UI with worst-case data | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `pick-ui-library` | Picks a library for a frontend task (run it yourself) | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
-| `security-audit` | Defensive security review and full audit workflow (validator scripts not included) | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) |
-| `i-have-adhd` | Action-first, numbered output style (run it yourself) | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) |
-| `find-skills` | Finds and suggests installable skills from skills.sh | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
-| `claude-md-audit` | Audits and slims down CLAUDE.md files (run it yourself) | this repo |
-| `video-pipeline` | Picks the video format and the skills to build it | this repo |
-| `design-references` | Style catalog, font pairings, libraries and poster/ad rules | this repo |
-| `ffmpeg-media` | ffmpeg recipes for cutting, reframing, captions and audio | this repo |
-| `ai-video-prompts` | Prompts for AI video generators in seven formats | this repo |
-| `image-to-code` | Builds sections from reference images | this repo |
-| `maps-to-website` | Local-business website from a Maps link | this repo |
-| `workflow-stacks` | Tool stacks and free replacements for paid tools | this repo |
-| `claude-code-resources` | Map of Claude Code repos, guides and packs | this repo |
 
-Alongside these, the author's `project-pipeline` calls a few separately installed plugins and skills: the plugins `superpowers`, `ui-ux-pro-max` and `diagram-design`, and the skills `design-taste-frontend`, `impeccable`, `playwright-cli`, `img2threejs`, `remotion-best-practices` and a motion graphics skill. Swap them for whatever you use.
+</details>
+
+My `project-pipeline` also calls separately installed tools: the plugins `superpowers`, `ui-ux-pro-max`, `diagram-design` and the skills `design-taste-frontend`, `impeccable`, `playwright-cli`, `img2threejs`, `remotion-best-practices` and a motion graphics skill. Swap them for yours.
