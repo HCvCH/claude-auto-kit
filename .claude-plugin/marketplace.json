@@ -1,5 +1,6 @@
 {
   "name": "auto-kit",
+  "description": "HCvCH's Claude Code skill kit, filled weekly from saved posts. Build your own with claude-auto-kit-template.",
   "owner": {
     "name": "HCvCH"
   },

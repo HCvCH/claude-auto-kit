@@ -1,6 +1,6 @@
 # Notice
 
-**claude-auto-kit** — the idea, the weekly mymind → skills workflow, and its implementation in this repository — was created by **HCvCH**: https://github.com/HCvCH/claude-auto-kit
+**claude-auto-kit** — the idea, the weekly mymind → skills workflow, and its implementation in this repository — was created by **HCvCH**: https://github.com/HCvCH/claude-auto-kit. To build your own kit, start from the template: https://github.com/HCvCH/claude-auto-kit-template
 
 ## What is licensed how
 

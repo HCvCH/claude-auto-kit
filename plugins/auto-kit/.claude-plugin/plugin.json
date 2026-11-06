@@ -4,5 +4,6 @@
   "author": {
     "name": "HCvCH"
   },
-  "repository": "https://github.com/HCvCH/claude-auto-kit"
+  "repository": "https://github.com/HCvCH/claude-auto-kit",
+  "license": "CC-BY-NC-SA-4.0"
 }
