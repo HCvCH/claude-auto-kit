@@ -1,10 +1,10 @@
 # claude-auto-kit
 
-**Save it, forget it — Claude installs it.** A template for your own self-updating Claude Code plugin: you save AI tips (Instagram reels, TikToks, posts, screenshots) into [mymind](https://mymind.com) while scrolling, and once a week Claude goes through them, turns the useful ones into skills, pushes them to *your* copy of this repo, and wires them into a `project-pipeline` skill that runs at the start of every project.
+I kept saving Instagram reels about Claude skills and tools to mymind, and I never installed any of them. So I built this. Once a week a scheduled Claude task reads my mymind space, works out which tool or skill each post is about, and adds the useful ones to this plugin. Claude Code pulls the update by itself, and the next project I start already has them.
 
-No more "saved 40 reels about Claude skills, installed none of them".
+You can run the same setup with your own saves. Treat the repo as a template: fork it, point it at your mymind space, and your copy fills up with your finds. Installing my copy gives you my picks, and those change every week.
 
-> **This repo is a template, not a plugin to install.** It only works with your own mymind space and your own copy of the repo. Fork it (or use it as a template), connect your mymind, and the weekly check fills *your* plugin with *your* finds. Installing someone else's copy just gives you their taste, changing every week.
+Claude Code wrote most of the files. I decide what goes in and use it on my own projects.
 
 ```mermaid
 flowchart LR
