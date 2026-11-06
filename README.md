@@ -6,18 +6,7 @@ You can run the same setup with your own saves. Treat the repo as a template: fo
 
 Claude Code wrote most of the files. I decide what goes in and use it on my own projects.
 
-```mermaid
-flowchart LR
-    A["📱 Save a reel / post / screenshot<br/>to your mymind space"] --> B["🗓️ Weekly Claude task<br/>reads new items"]
-    B --> C{"What is it?"}
-    C -->|"Skill (open license)"| D["Copied into your repo"]
-    C -->|"Checklist / prompt"| E["Rewritten as a skill"]
-    C -->|"Plugin / MCP / CLI"| F["Install command<br/>in the weekly report"]
-    C -->|"Irrelevant / duplicate"| G["Skipped, noted"]
-    D --> H["project-pipeline updated"]
-    E --> H
-    H --> I["💻 Claude Code auto-updates<br/>the plugin on your PC"]
-```
+![How it works: save posts to mymind, a weekly Claude task sorts them, useful skills land in the plugin](docs/flow.svg)
 
 ## What you need
 
