@@ -28,7 +28,7 @@ Ask at most one question if the brief doesn't make the format obvious. Otherwise
 | Coaching / talking clip | advice, tips, podcast snippet | speaker + big keyword captions + b-roll cut-ins every 3–5 s | `ffmpeg-media` for cuts, captions from Whisper timestamps, b-roll from free stock | ffmpeg + Remotion overlays |
 | Photo tour / listing video | property, product or location photos → cinematic tour | slow push-ins, parallax from depth, smooth crossfades, music | photos as layers in Remotion (Ken Burns, 2.5D parallax) — no paid generator needed | Remotion |
 
-Mechanical editing (cuts, reframes, captions, loudness) always goes through `ffmpeg-media`. For prompt ideas and real examples of Claude-made motion videos, browse the CC-BY-4.0 collection https://github.com/athemeroy/awesome-claude-5-5-videos and adapt — never copy a prompt unchanged. Sound effects: use a local royalty-free SFX folder if the user has one (ask once for its path) before generating any.
+Mechanical editing (cuts, reframes, captions, loudness) always goes through `ffmpeg-media`. For prompt ideas and real examples of Claude-made motion videos, browse the CC-BY-4.0 collection https://github.com/athemeroy/awesome-claude-5-5-videos and adapt — never copy a prompt unchanged. Sound effects: use a local royalty-free SFX folder if the user has one (ask once for its path) before generating any; sourcing, choice and frame-exact placement follow `sound-effects`.
 
 If the format needs a tool that isn't installed (HyperFrames, an image generator, a TTS tool), say which one and use the fallback in the same row — never stall.
 
