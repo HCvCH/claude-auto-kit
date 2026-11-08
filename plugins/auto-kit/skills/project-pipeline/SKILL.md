@@ -114,6 +114,7 @@ If a reference image exists in the project, use `/img2threejs` to rebuild it as 
 - Format and skill choice first → load `video-pipeline`: it picks the format (explainer, 3D explainer, data, map, breakdown, cartoon, story series, edits) and the skills for it, then hands back here.
 - Cutting, reframing, captions, audio mix and compression → `ffmpeg-media`.
 - Prompts for AI video generators instead of code-rendered video → `ai-video-prompts`.
+- Sound effects — sourcing (local folder, earshot/real-sfx if installed, Openverse), choosing and placing on exact frames → `sound-effects`.
 - Direction for every video — script, storyboard, timing, sound design → the motion graphics skill (Miftahul).
 - Rendering in Remotion (default for data-driven or template videos: charts, bar races, swappable JSON data) → Remotion best practices skill.
 
@@ -186,6 +187,7 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | video-pipeline | 8 | VIDEO | always (format and skill router, runs before the storyboard) |
 | ffmpeg-media | 8 | VIDEO | if footage or audio has to be cut, converted, captioned or mixed |
 | ai-video-prompts | 8 | VIDEO | if the video is made with an AI video generator instead of code |
+| sound-effects | 8 | VIDEO | if the video gets sound effects |
 | motion graphics skill (Miftahul) | 8 | VIDEO | always |
 | Remotion best practices | 8 | VIDEO | if the video is rendered with Remotion |
 

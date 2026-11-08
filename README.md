@@ -21,6 +21,7 @@ My own Claude Code skill kit. I save reels and posts about Claude skills to mymi
 | `maps-to-website` | Local-business website from a Maps link |
 | `ffmpeg-media` | ffmpeg recipes for cutting, reframing, captions and audio |
 | `ai-video-prompts` | Prompts for AI video generators in seven formats |
+| `sound-effects` | Free SFX via Openverse, choosing sounds and placing them on exact frames |
 | `workflow-stacks` | Tool stacks and free replacements for paid tools |
 | `claude-code-resources` | Map of Claude Code repos, guides and packs |
 
