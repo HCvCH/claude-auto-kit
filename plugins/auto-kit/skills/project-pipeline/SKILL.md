@@ -115,6 +115,7 @@ If a reference image exists in the project, use `/img2threejs` to rebuild it as 
 - Cutting, reframing, captions, audio mix and compression → `ffmpeg-media`.
 - Prompts for AI video generators instead of code-rendered video → `ai-video-prompts`.
 - Sound effects — sourcing (local folder, earshot/real-sfx if installed, Openverse), choosing and placing on exact frames → `sound-effects`.
+- The video's visual style (glass, pixel, paper-cut, CGI, isometric, physics, HUD and more, each with its render tech) → pick from `motion-styles` when offering the style directions.
 - Direction for every video — script, storyboard, timing, sound design → the motion graphics skill (Miftahul).
 - Rendering in Remotion (default for data-driven or template videos: charts, bar races, swappable JSON data) → Remotion best practices skill.
 
@@ -188,6 +189,7 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | ffmpeg-media | 8 | VIDEO | if footage or audio has to be cut, converted, captioned or mixed |
 | ai-video-prompts | 8 | VIDEO | if the video is made with an AI video generator instead of code |
 | sound-effects | 8 | VIDEO | if the video gets sound effects |
+| motion-styles | 8 | VIDEO | choose |
 | motion graphics skill (Miftahul) | 8 | VIDEO | always |
 | Remotion best practices | 8 | VIDEO | if the video is rendered with Remotion |
 

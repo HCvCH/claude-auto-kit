@@ -45,7 +45,7 @@ If the user gives only a short prompt ("make a full-visual explainer about how a
 
 ## 2. Pick the look
 
-Offer three concrete style directions for the chosen format, as in Phase 1 of `project-pipeline` (named style, palette with hex values, type, motion feel). One of them must fit the format's "Look" column above. Wait for the pick.
+Offer three concrete style directions for the chosen format, as in Phase 1 of `project-pipeline` (named style, palette with hex values, type, motion feel). One of them must fit the format's "Look" column above; take the directions from `motion-styles` (look, motion and render tech per style). Wait for the pick.
 
 Rules for every look:
 - Apply the anti-slop rules of Phase 8a in `project-pipeline` to every frame.
