@@ -85,7 +85,7 @@ WEB and CODE: for app logic (state, data handling, calculations, game rules — 
 
 ## Phase 4 — Motion (WEB)
 
-Follow the motion level picked in Phase 1. "None" still covers basic feedback (hover, press, focus, loading, success/error). "Subtle" adds entrances and state changes. "Rich" adds scroll reveals and scroll-linked effects with GSAP + ScrollTrigger from cdnjs. Always respect `prefers-reduced-motion`. For each animation, follow `animate` (decides whether it should animate at all, curve, duration, interruption) and check it against `animation-performance`. For drag, swipe, sheets, springs and other gesture-driven UI, use `apple-design`'s motion physics — its visual aesthetic only if that direction was picked. Smooth scrolling → Lenis; ready animated React components → React Bits or 21st.dev, restyled to the picked direction (see `design-references`).
+Follow the motion level picked in Phase 1. "None" still covers basic feedback (hover, press, focus, loading, success/error). "Subtle" adds entrances and state changes. "Rich" adds scroll reveals and scroll-linked effects with GSAP + ScrollTrigger from cdnjs. Always respect `prefers-reduced-motion`. For each animation, follow `animate` (decides whether it should animate at all, curve, duration, interruption); exact curves, spring values and durations come from `motion-easing` and check it against `animation-performance`. For drag, swipe, sheets, springs and other gesture-driven UI, use `apple-design`'s motion physics — its visual aesthetic only if that direction was picked. Smooth scrolling → Lenis; ready animated React components → React Bits or 21st.dev, restyled to the picked direction (see `design-references`).
 
 ## Phase 5 — Test (WEB, 3D)
 
@@ -116,6 +116,7 @@ If a reference image exists in the project, use `/img2threejs` to rebuild it as 
 - Prompts for AI video generators instead of code-rendered video → `ai-video-prompts`.
 - Sound effects — sourcing (local folder, earshot/real-sfx if installed, Openverse), choosing and placing on exact frames → `sound-effects`.
 - The video's visual style (glass, pixel, paper-cut, CGI, isometric, physics, HUD and more, each with its render tech) → pick from `motion-styles` when offering the style directions.
+- Remotion build quality (eased springs, staggered entrances, grade/grain/vignette stack, render-and-look loop) → `remotion-motion-graphics`; curves, springs and timing for every move → `motion-easing`.
 - Direction for every video — script, storyboard, timing, sound design → the motion graphics skill (Miftahul).
 - Rendering in Remotion (default for data-driven or template videos: charts, bar races, swappable JSON data) → Remotion best practices skill.
 
@@ -190,6 +191,8 @@ One row per skill. "Bundles" = project types the skill is relevant for. "Mode": 
 | ai-video-prompts | 8 | VIDEO | if the video is made with an AI video generator instead of code |
 | sound-effects | 8 | VIDEO | if the video gets sound effects |
 | motion-styles | 8 | VIDEO | choose |
+| remotion-motion-graphics | 8 | VIDEO | if the video is built in Remotion |
+| motion-easing | 4, 8 | WEB, 3D, VIDEO | always |
 | motion graphics skill (Miftahul) | 8 | VIDEO | always |
 | Remotion best practices | 8 | VIDEO | if the video is rendered with Remotion |
 

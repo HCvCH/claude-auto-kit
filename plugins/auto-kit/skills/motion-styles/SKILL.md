@@ -45,6 +45,17 @@ Default Claude animation is flat shapes sliding in with ease-out. Pro results co
 | Atom / science model | Glowing nucleus, orbit rings, particle trails | Electrons orbit, energy levels pulse, interactive hover in web version | Three.js with bloom; particles as instanced points |
 | Variety captions (9:16) | Big bold words, emoji, colour per speaker | Word-by-word pop synced to voice | Remotion captions; `ffmpeg-media` for burn-in |
 
+## Cinematic 3D in code
+
+For any 3D look (CGI product, teardown, isometric, 3D chart, hologram, atom) plan these per shot before writing code — they are what separates a real 3D film from a spinning model:
+
+- **Camera:** one deliberate move per shot (dolly in, orbit, crane up, truck along) on an ease-in-out path; a real focal length (35–50 mm feel for scenes, 85 mm for product close-ups); shallow depth of field on the subject for close shots.
+- **Light:** key, fill and rim light (or an HDRI plus one rim); warm key against cool fill for depth; light sweeps or a moving shadow to show form; bloom only on things that should glow.
+- **Motion:** every object on its own timing with weight (`motion-easing`: heavy springs for big parts, follow-through on attached parts); nothing moves at the exact same moment as the camera starts.
+- **Materials:** physically based (roughness, metalness) instead of flat colors; a subtle environment reflection on glossy parts.
+- **Atmosphere:** fog or depth haze for scale, floating particles or dust in light beams, a ground plane with contact shadows so objects sit in the world.
+- **Sound per beat:** list which frame gets which sound (whoosh on camera moves, click on parts locking, hum under glows) — `sound-effects`.
+
 ## Quality rules for every style
 
 - Texture carries the style: paper grain, pixel grid, scanlines, film noise. Without it most styles fall back to "default vector".
